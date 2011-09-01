@@ -1,4 +1,7 @@
-(function (keymaster) {
+//     keymaster.sequence.js
+//     (c) 2011 Ron Derksen
+//     keymaster.sequence.js may be freely distributed under the MIT license.
+;(function (keymaster) {
   _seqScope = "seq_";
 
   if (!Function.prototype.bind) {
