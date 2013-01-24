@@ -32,6 +32,7 @@
     for(i = 0; i < keys.length; i++) {
       if (i < keys.length-1) {
         //create specific scope for current key in sequence
+        _oldScope = scope;
         _seqScope = _seqScope + keys[i];
 
         keymaster(keys[i], scope, function (ev, key) {
@@ -39,7 +40,7 @@
 
             // reset scope after 1 second
           _timer = setTimeout(function () {
-            keymaster.setScope('all');
+            keymaster.setScope(_oldScope);
           }, 1000);
         }.bind(_seqScope));
       } else {
