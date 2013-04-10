@@ -29,23 +29,28 @@
       scope = 'all';
     }
 
+    var _origScope = scope;
     for(i = 0; i < keys.length; i++) {
       if (i < keys.length-1) {
         //create specific scope for current key in sequence
-        _oldScope = scope;
         _seqScope = _seqScope + keys[i];
 
         keymaster(keys[i], scope, function (ev, key) {
           keymaster.setScope(this.toString());
 
-            // reset scope after 1 second
+          // reset scope after 1 second
           _timer = setTimeout(function () {
-            keymaster.setScope(_oldScope);
+            keymaster.setScope(_origScope);
           }, 1000);
         }.bind(_seqScope));
       } else {
         // last key should perform the method
-        keymaster(keys[i], _seqScope, method);
+        keymaster(keys[i], _seqScope, function() {
+          // Set the scope back to the original, then
+          // call our passed in method
+          keymaster.setScope(_origScope);
+          return method.apply(this, arguments);
+        });
       }
       scope = _seqScope;
     }
