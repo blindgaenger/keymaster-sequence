@@ -1,0 +1,23 @@
+{
+  "name": "keymaster-sequence",
+  "version": "0.0.0",
+  "homepage": "http://chevalric.github.com/keymaster-sequence/",
+  "authors": [
+    "Ron Derksen"
+  ],
+  "description": "key sequence plugin for use with keymaster.js",
+  "main": "keymaster.sequence.js",
+  "keywords": [
+    "keymaster",
+    "plugin",
+    "sequence"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
